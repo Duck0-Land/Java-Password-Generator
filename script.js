@@ -18,6 +18,9 @@ function generatePassword() {
     
   }
 
+  window.alert("What character types do you want to use? Choose at least one.");
+
+  //picking character types//
   hasLowercase = confirm("Do you want lowercase characters?");
   if (hasLowercase) {
     var turnToLowercase = alert("Your password will have lowercase characters.");
@@ -56,7 +59,31 @@ function generatePassword() {
 
 
 
-//starter
+  // group selected characters
+  if (hasLowercase) {
+    possibleCharacters = possibleCharacters.concat(lowercaseCharacters);
+  }
+  if (hasUppercase) {
+    possibleCharacters = possibleCharacters.concat(uppercaseCharacters);
+  }
+  if (hasNumbers) {
+    possibleCharacters = possibleCharacters.concat(numericCharacters);
+  }
+  if (hasSpecial) {
+    possibleCharacters = possibleCharacters.concat(specialCharacters);
+  }
+
+  // pick random cards out of new pool for length of password
+  let finalPassword = ""
+  for (let i = 0; i < numberOfCharacters; i++) {
+    let rng =[Math.floor(Math.random() * possibleCharacters.length)];
+    // or finalPassword += possibleCharacters[rng];
+    finalPassword = finalPassword + possibleCharacters[rng];
+  }
+  return finalPassword;
+};
+
+//starter code//
 var generateBtn = document.querySelector("#generate");
 
 
